@@ -2,6 +2,7 @@ import datetime as dt
 from time import sleep
 
 import joblib
+import numpy as np
 import pandas as pd
 import streamlit as st
 from sklearn import set_config
@@ -24,6 +25,12 @@ df = pd.read_csv(
     asset_paths["test_data"],
     parse_dates=["tpep_pickup_datetime"],
 ).set_index("tpep_pickup_datetime")
+
+
+def flatten_transform_output(values) -> list[float]:
+    if isinstance(values, (pd.DataFrame, pd.Series)):
+        return values.to_numpy().ravel().tolist()
+    return np.asarray(values).ravel().tolist()
 
 st.title("Uber Demand in New York City")
 st.caption("Running fully locally with generated sample assets. No cloud services or remote registry are required.")
@@ -157,7 +164,7 @@ if date and time:
             )
 
     elif map_type == "Only for Neighborhood Regions":
-        distances = kmeans.transform(scaled_coord).ravel().tolist()
+        distances = flatten_transform_output(kmeans.transform(scaled_coord))
         sorted_distances = sorted(enumerate(distances), key=lambda x: x[1])[0:9]
         indexes = sorted([ind[0] for ind in sorted_distances])
 
