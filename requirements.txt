@@ -1,0 +1,7 @@
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.5
+joblib>=1.4
+streamlit>=1.38
+PyYAML>=6.0
+dask[dataframe]>=2024.8
