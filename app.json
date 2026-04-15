@@ -1,0 +1,17 @@
+{
+  "name": "uber-demand-forecasting",
+  "description": "A Streamlit app that predicts cab demand across New York City.",
+  "repository": "https://github.com/leninathikam/uber_demand_forecasting",
+  "keywords": [
+    "python",
+    "streamlit",
+    "forecasting",
+    "machine-learning",
+    "heroku"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}

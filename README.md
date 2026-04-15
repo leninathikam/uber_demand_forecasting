@@ -45,3 +45,29 @@ Alternative free option: Render
 Why not Vercel or Netlify?
 
 This project is a long-running Python Streamlit server. Vercel and Netlify are a much better fit for static sites and serverless functions than for a persistent Streamlit app process.
+
+Heroku
+------------
+
+This repository is now set up for Heroku with:
+
+- `Procfile` for the Streamlit web process
+- `.python-version` set to `3.12`
+- `app.json` for app metadata
+- `.slugignore` to keep the deploy slug smaller
+
+Deploy steps:
+
+```bash
+heroku login
+heroku create your-app-name
+git push heroku main
+heroku open
+```
+
+Useful commands:
+
+```bash
+heroku logs --tail --app your-app-name
+heroku ps --app your-app-name
+```
